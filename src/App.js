@@ -59,7 +59,7 @@ function App() {
           >
             <TextField 
                variant = 'outlined'
-               helperText="Enter the number you just saw on the screen"
+               helperText="Enter the number you just see on the screen"
                value = {answer}
                onChange = { e => setAnswer(e.target.value)}
             />
