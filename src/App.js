@@ -14,6 +14,7 @@ function App() {
   const [number,setNumber] = useState(0)
   const [answer,setAnswer] = useState(0)
   const [showNumber,setShowNumber] = useState(true)
+  const [level,setLevel] = useState(0)
 
 
   // const time = setTimeout(()=>{
@@ -30,6 +31,7 @@ function App() {
   const compareNumbers = () =>{
     if(number == answer){
       console.log('true')
+      setLevel(level+1)
       setAnswer('')
       setMin(min*10)
       setMax(max*10)
@@ -57,13 +59,16 @@ function App() {
           >
             <TextField 
                variant = 'outlined'
+               helperText="Enter the number you just saw on the screen"
                value = {answer}
                onChange = { e => setAnswer(e.target.value)}
             />
-            <Button onClick={()=>compareNumbers()}> Submit</Button>
+            <Button onClick={()=>compareNumbers()} variant="outlined" size="medium"> Submit</Button>
+           <br/>
+           <br/>
           </Stack>
         }
-
+        <Typography align = 'center' variant ='h6'>Level  {level}</Typography> 
     </Paper>
   );
 }
