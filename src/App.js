@@ -53,6 +53,10 @@ function App() {
   const restart = ()=>{
     setGameOver(false)
     setShowNumber(true)
+    window.location = '/'
+    
+    // setShowNumber(true)
+ 
   }
 
   return !gameOver ? (
