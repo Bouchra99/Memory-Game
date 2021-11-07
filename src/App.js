@@ -15,6 +15,8 @@ function App() {
   const [answer,setAnswer] = useState(0)
   const [showNumber,setShowNumber] = useState(true)
   const [level,setLevel] = useState(0)
+  const [gameOver,setGameOver] = useState(false)
+
 
 
 
@@ -39,13 +41,23 @@ function App() {
       setShowNumber(true)
     }else{
       console.log('false')
-      window.location = '/'
+
+      setGameOver(true);
+      // setTimeout(()=>{
+      //   window.location = '/'
+      // },2000)
+      // window.location = '/'
     }
   }
+  
+  const restart = ()=>{
+    setGameOver(false)
+    setShowNumber(true)
+  }
 
-  return (
+  return !gameOver ? (
     <Paper  sx={{ padding: 10,justifyContent:"center",caretColor: 'transparent' }}>
-       { showNumber ? 
+       { showNumber  ? 
         
           <Typography align = 'center' variant ='h1'>{number}</Typography> 
           : 
@@ -66,9 +78,21 @@ function App() {
            <br/>
           </Stack>
         }
+        {/* {gameOver ? <Typography align = 'center' variant ='h3'>Game Over</Typography> : <></> } */}
         <Typography align = 'center' variant ='h6'>Level  {level}</Typography> 
     </Paper>
-  );
+  ) : <Paper sx={{ padding: 10,justifyContent:"center",caretColor: 'transparent' }}> 
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={2}
+        >
+          <Typography align = 'center' variant ='h2'>Game Over </Typography> 
+          <Typography align = 'center' variant ='h6'>Level  {level}</Typography> 
+          <Button variant="contained" onClick={()=>restart() }>Restart</Button>
+        </Stack>
+     </Paper>;
 }
 
 export default App;
