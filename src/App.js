@@ -43,18 +43,23 @@ function App() {
       console.log('false')
 
       setGameOver(true);
+      // setLevel(1);
+      setMin(1);
+      setMax(10);
       // setTimeout(()=>{
       //   window.location = '/'
       // },2000)
       // window.location = '/'
     }
   }
+  console.log(level)
   
   const restart = ()=>{
+    // setShowNumber(true)
+    setLevel(1)
     setGameOver(false)
-    setShowNumber(true)
     window.location = '/'
-    
+    // setShowNumber()
     // setShowNumber(true)
  
   }
